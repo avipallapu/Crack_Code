@@ -15,6 +15,7 @@ class Node{
 		this.next = next;
 	}
 	
+	// Insert into the Singly list Node 
 	public Node insert(Node head, int data){
 		Node newNode = new Node();
 		newNode.setData(data);
@@ -27,6 +28,16 @@ class Node{
 		}
 		return head;
 	}
+
+	// Insert into the Singly list Node 
+	public Node insertMulti(Node head, int[] x){
+		for(int i : x){
+			head = insert(head, i);
+		}
+		return head;
+	}
+	
+	// print the contents into the Singly list Node
 	public void write2Screen(Node head){
 		System.out.println("Nodes in linked list");
 		while(head!=null){
@@ -36,6 +47,7 @@ class Node{
 		System.out.print("NULL\n");
 	}
 	
+	//Check for any duplicates in the linked list and remove them 
 	public Node removeDuplicates(Node head){
 		if(head==null || head.getNext()==null) { return head; }
 		Node curr = head;
@@ -55,7 +67,8 @@ class Node{
 		}
 	return head;
 	}
-
+	
+	// Find the Kth element from the end of the list 
 	public int findKth(Node head, int k){
 		if(head==null || head.next==null) { return 0; }
 		Node curr = head;
@@ -73,24 +86,32 @@ class Node{
 		return curr.getData();
 	}
 
+	public void deleteNodeMiddleOfList(Node beRemoved){
+		beRemoved.setData(beRemoved.getNext().getData());
+		beRemoved.setNext(beRemoved.getNext().getNext());
+	}
 }
 public class LinkedListExercise {
 	public static void main(String args[]){
 		Node head = null;
 		Node  n = new Node();
-		head = n.insert(head, 3);
-		head = n.insert(head, 4);
-		head = n.insert(head, 33);
-		head = n.insert(head, 3);
-		head = n.insert(head, 3);
+		int[] inserValues = {30,2,4,5,6};
+		head = n.insertMulti(head, inserValues);
 		n.write2Screen(head);
+
 		//The next two lines check for any duplicates in the linked list and remove them 
 		// To check, uncomment the next two lines and run 
 		//n.removeDuplicates(head);
 		//n.write2Screen(head);
 		
 		// Find the Kth element from the end of the list 
-		System.out.println(n.findKth(head, 4));
+		//System.out.println(n.findKth(head, 4));
+		
+		// Delete the node from the list given only access to that node which exists in the middle of the list
+		//n.deleteNodeMiddleOfList(head.getNext().getNext().getNext());
+		//n.write2Screen(head);
+		
+		
 		
 
 	}
