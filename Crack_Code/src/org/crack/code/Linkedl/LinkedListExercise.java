@@ -37,21 +37,21 @@ class Node{
 	}
 	
 	public Node removeDuplicates(Node head){
-		if(head==null || head.next==null) { return head; }
+		if(head==null || head.getNext()==null) { return head; }
 		Node curr = head;
 		Node a = curr;
 		
-		while(curr!=null && curr.next!=null){
+		while(curr!=null && curr.getNext()!=null){
 			a = curr;
-			while(a.next!=null){
-				if(a.next.getData() == curr.getData()){
-					a.next = a.next.next; 
+			while(a.getNext()!=null){
+				if(a.getNext().getData() == curr.getData()){
+					a.setNext(a.getNext().getNext()); 
 					}
 				else{
-					a = a.next;
+					a = a.getNext();
 				}		
 			}
-			curr = curr.next;
+			curr = curr.getNext();
 		}
 	return head;
 	}
@@ -61,15 +61,16 @@ class Node{
 		Node curr = head;
 		int i=0;
 		int j =i-k;
-		while(head.next!=null){
+		while(head!=null && head.next!=null){
 			i++;
 			j++;
 			if(j>=0){
-				curr = curr.next;
+				curr = curr.getNext();
 			}
-			head = head.next;
+			
+			head = head.getNext();
 		}
-		return curr.data;
+		return curr.getData();
 	}
 
 }
@@ -83,11 +84,15 @@ public class LinkedListExercise {
 		head = n.insert(head, 3);
 		head = n.insert(head, 3);
 		n.write2Screen(head);
-		n.removeDuplicates(head);
+		//The next two lines check for any duplicates in the linked list and remove them 
+		// To check, uncomment the next two lines and run 
+		//n.removeDuplicates(head);
+		//n.write2Screen(head);
 		
-		//System.out.println(n.findKth(head, 5));
+		// Find the Kth element from the end of the list 
+		System.out.println(n.findKth(head, 4));
 		
-		n.write2Screen(head);
+
 	}
 	
 
