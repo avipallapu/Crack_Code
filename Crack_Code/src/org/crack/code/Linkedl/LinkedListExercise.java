@@ -39,10 +39,10 @@ class Node{
 	public Node removeDuplicates(Node head){
 		if(head==null || head.next==null) { return head; }
 		Node curr = head;
-		Node a = head;
+		Node a = curr;
 		
-		while(curr.next!=null){
-			//System.out.print(a.next.data + " null\n");
+		while(curr!=null && curr.next!=null){
+			a = curr;
 			while(a.next!=null){
 				if(a.next.getData() == curr.getData()){
 					a.next = a.next.next; 
@@ -78,16 +78,16 @@ public class LinkedListExercise {
 		Node head = null;
 		Node  n = new Node();
 		head = n.insert(head, 3);
-		head = n.insert(head, 30);
-		head = n.insert(head, 37);
-		head = n.insert(head, 90);
-		head = n.insert(head, 37);
+		head = n.insert(head, 4);
+		head = n.insert(head, 33);
+		head = n.insert(head, 3);
+		head = n.insert(head, 3);
 		n.write2Screen(head);
 		n.removeDuplicates(head);
-		n.write2Screen(head);
+		
 		//System.out.println(n.findKth(head, 5));
 		
-		
+		n.write2Screen(head);
 	}
 	
 
