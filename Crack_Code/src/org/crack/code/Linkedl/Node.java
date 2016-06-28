@@ -1,5 +1,6 @@
 package org.crack.code.Linkedl;
 
+// This class handles a single linked list operations and data
 public class Node{
 	private int data;
 	private Node next;
