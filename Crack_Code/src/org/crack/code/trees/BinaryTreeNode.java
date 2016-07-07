@@ -1,5 +1,7 @@
 package org.crack.code.trees;
 
+import java.util.Stack;
+
 class Node{
 	int key;
 	String name;
@@ -77,10 +79,43 @@ class BinaryTreeNode{
 		}
 	}
 	
-	public int checkHeight(Node r){
-		if(r == null) { return 0; }
+	public int checkHeight(Node root){
+		if(root == null) { return 0; }
 		else{
-			return Math.max(checkHeight(r.leftChild), checkHeight(r.rightChild)) + 1;
+			return Math.max(checkHeight(root.leftChild), checkHeight(root.rightChild)) + 1;
 		}
+	}
+
+	public void checkBalanced(Node root){
+		Stack<Node> st = new Stack<>();
+		st.add(root);
+		Node parent;
+		
+		int leftLength = 0;
+		int rightLength = 0;
+		if(root==null) { 
+			System.out.println("Tree has no elements"); 
+			return; 
+			} 
+		
+		while(!st.isEmpty()){
+			parent = st.pop();
+			if(parent.leftChild!=null) { 
+				leftLength = checkHeight(parent.leftChild);
+				st.add(parent.leftChild); 
+			}
+			if(parent.rightChild!=null) { 
+				rightLength = checkHeight(parent.rightChild);
+				st.add(parent.rightChild);
+			}
+
+			if(Math.abs(leftLength - rightLength) > 1){
+				System.out.println("Not Balanced");
+				return;
+			}
+		}
+		
+		System.out.println("Balanced");
+		return;		
 	}
 }
