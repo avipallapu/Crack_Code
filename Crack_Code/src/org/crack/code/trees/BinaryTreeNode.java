@@ -118,4 +118,26 @@ class BinaryTreeNode{
 		System.out.println("Balanced");
 		return;		
 	}
-}
+
+	public Node array2BinaryTree(int[] arr, int start, int end){
+		if(end < start){ return null; } 
+		int mid = (start+end)/2;
+		Node newNode = new Node(arr[mid],"A");
+		
+		newNode.leftChild = array2BinaryTree(arr, start, mid-1);
+		newNode.rightChild = array2BinaryTree(arr, mid+1, end);
+		
+		return newNode;
+	}
+
+	public boolean checkIfBST(Node root, Integer min, Integer max){
+		if(root == null) { return true; } 
+		if(max!=null && root.key > max) { return false; } 
+		if(min!=null && root.key <= min) { return false; }
+		
+		if(!checkIfBST(root.leftChild, min, root.key) || !checkIfBST(root.rightChild, root.key, max)){
+			return false;
+		}
+		return true;
+	}
+	}
