@@ -51,27 +51,30 @@ class BinaryTreeNode{
 	}	
 	
 	public void inOrder(Node root){
-		if(root == null) { return;  }
+		if(root != null) { 
 		
 		inOrder(root.leftChild);
 		System.out.println(root.toString());
 		inOrder(root.rightChild);
+		}
 	}
 	
 	public void preOrder(Node root){
-		if(root == null) { return;  }
+		if(root != null) {
 		
 		preOrder(root.leftChild);
 		preOrder(root.rightChild);
 		System.out.println(root.toString());
+		}
 	}
 	
 	public void postOrder(Node root){
-		if(root == null) { return;  }
+		if(root != null) { 
 		
 		System.out.println(root.toString());
 		postOrder(root.leftChild);
 		postOrder(root.rightChild);
+		}
 	}
 	
 	public int checkHeight(Node r){
